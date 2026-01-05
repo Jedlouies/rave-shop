@@ -1,0 +1,17 @@
+:root {
+    --default-bg-color: #ffffff;
+    --default-text-color: #333333;
+
+    --primary-color: #4CAF50;
+    --secondary-color: #FF5722;
+    --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-sm: 14px;
+    --spacing-base: 16px;
+    --spacing-lg: 24px;
+
+    --border-radius: 4px;
+    
+}

@@ -1,0 +1,8 @@
+Domain List
+1. User Authentication
+2. Product Catalog
+3. Cart & Checkout
+4. Order Processing
+5. Inventory Tracking
+6. Payment Silmulation
+7. Notification
