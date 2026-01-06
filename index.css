@@ -1,17 +1,28 @@
 :root {
-    --default-bg-color: #ffffff;
+    --default-bg-color: #ededed;
     --default-text-color: #333333;
+    --primary-txt-color: #ffffff;
 
-    --primary-color: #4CAF50;
-    --secondary-color: #FF5722;
+    --primary-color: #1c1180;
+    --secondary-color: #c6c6c6;
     --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     --font-size-base: 16px;
     --font-size-lg: 18px;
     --font-size-sm: 14px;
+    --font-size-xs: 10px;
     --spacing-base: 16px;
     --spacing-lg: 24px;
 
-    --border-radius: 4px;
-    
+    --border-radius: 20px;
+
+    --default-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+body {
+    margin: 0;
+    background-color: var(--default-bg-color);
+    color: var(--default-text-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
 }

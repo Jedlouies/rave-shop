@@ -1,0 +1,135 @@
+.landing-page-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 620px;
+    align-items: center;
+    gap: 50px;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.landing-page-container h1 {
+    font-family: 'M PLUS 1', sans-serif;
+    font-size: 48px;
+    font-weight: 1000;
+    color: var(--primary-color);
+}
+
+.landing-page-container strike {
+    color: var(--default-text-color);
+    opacity: 0.4;
+    margin-left: 10px;
+}
+
+.landing-page-container button.buy-now-button {
+    color: var(--default-text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 12px 24px;
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+    box-shadow: var(--default-box-shadow);
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.landing-page-container button.buy-now-button:hover {
+    background-color: var(--primary-color);
+    color: var(--primary-txt-color);
+    scale: 1.1;
+    transition: all 0.3s ease;
+}
+
+.featured-shoe-container {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.featured-shoe {
+    width: 100%;
+}
+
+.product-featured-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.sale-container {
+    padding: 10px;
+    overflow: hidden;
+    width: stretch;
+    white-space: nowrap;
+    color: var(--primary-txt-color);
+    background-color: var(--primary-color);
+    width: 100%;
+    top: 15%;
+    margin: 10px;
+}
+
+.moving-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: slideRight 2000s linear infinite;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.footer {
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px;
+    text-align: center;
+    background-color: transparent;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.6);
+    color: var(--default-text-color);
+    font-size: 10px;
+}
+
+.footer-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    text-align: left;
+}
+
+.footer-item {
+    width: 20%;
+}
+
+@media (max-width:768px) {
+    .landing-page-container {
+        flex-direction: column;
+        margin-top: 100px;
+        height: auto;
+    }
+
+    .featured-shoe-container {
+        width: 100%;
+    }
+
+    .product-featured-container {
+        text-align: center;
+        width: 80%;
+    }
+
+    .sale-container {
+        margin-top: -40px;
+    }
+
+    
+    
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-50%); 
+  }
+  100% {
+    transform: translateX(0%); 
+  }
+}
