@@ -8,7 +8,7 @@ import Login from "../src/common/login";
 function App() {
 
     const [showLogin, setShowLogin] = useState(false);
-    
+
     return (
         <div className="app-container">
             <NavBar handleLoginClick={() => setShowLogin(true)}/>
