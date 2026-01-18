@@ -1,7 +1,7 @@
 .landing-page-container {
     display: flex;
     flex-wrap: wrap;
-    height: 620px;
+    height: 90vh;
     align-items: center;
     gap: 50px;
     margin-top: 50px;
@@ -78,14 +78,15 @@
 }
 
 .footer {
-    width: 100%;
-    margin-top: 50px;
+    width: 90%;
     padding: 10px;
     text-align: center;
     background-color: transparent;
-    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.6);
+    border-radius: 40px;
+    box-shadow: var(--default-box-shadow);
     color: var(--default-text-color);
-    font-size: 10px;
+    font-size: 15px;
+    height: auto;
 }
 
 .footer-body {

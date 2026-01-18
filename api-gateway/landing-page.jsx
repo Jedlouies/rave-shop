@@ -7,11 +7,6 @@ function LandingPage() {
   <>
    
     <div className='landing-page-container'>
-        <div className="sale-container">
-            <div className="moving-text">
-                {bannerText.repeat(120)}
-            </div>
-        </div>
         <div className="featured-shoe-container">
             <img className='featured-shoe' src="/Shoes.png" alt="featured-shoes" />
         </div>

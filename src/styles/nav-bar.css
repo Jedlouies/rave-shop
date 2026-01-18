@@ -2,15 +2,15 @@
     position: relative;
     background-color: transparent;
     padding: var(--spacing-base);
+    top: 20px;
     padding-left: 3%;
     padding-right: 3%;
     margin-left: 100px;
     margin-right: 100px;
     font-size: var(--font-size-xs);
     color: var(--default-text-color);
-    height: 50px;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
+    height: 30px;
+    border-radius: 20px;
     box-shadow: var(--default-box-shadow);
     display: flex;
     flex-direction: row;
@@ -74,7 +74,7 @@
     cursor: pointer;
     color: var(--primary-txt-color);
     padding: 4px;
-    padding-left:10px;
+    padding-left: 10px;
     padding-right: 10px;
     border-radius: 20px;
     gap: 10px;

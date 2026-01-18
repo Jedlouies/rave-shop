@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "../src/common/nav-bar";
 import LandingPage from "./landing-page";
 import Login from "../src/common/login";
+import NoLoginCatalog from "../src/catalog/no-login-catalog";
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
             <NavBar handleLoginClick={() => setShowLogin(true)}/>
             <Routes>
                 <Route path="/" element={<LandingPage />} />
-                
+                <Route path="/products" element={<NoLoginCatalog />} />
             </Routes>
             
             {showLogin && (

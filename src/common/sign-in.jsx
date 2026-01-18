@@ -2,10 +2,60 @@ import { FaGoogle } from "react-icons/fa";
 import Login from "./login";
 import "../styles/sign-in.css"
 import { useState } from "react";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../firebase";
 
 function SignIn({onClose}) {    
 
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [showLogin, setShowLogin] = useState(false);
+    const [error, setError] = useState("");
+    const [showError, setShowError] = useState(false);
+
+    const handleSignup = async (e) => {
+      e.preventDefault();
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+        console.log("User created:", userCredential.user);
+        alert("Account created successfully!");
+      } catch (error) {
+        console.error(error);
+
+        switch (error.code) {
+          case "auth/email-already-in-use":
+            setError("Email already in use");
+            break;
+          case "auth/invalid-email":
+            setError("Invalid email address");
+            break;
+          case "auth/weak-password":
+            setError("Password should be at least 6 characters");
+            break;
+          default:
+            setError("Failed to create account");
+        }
+        setShowError(true); 
+      }
+    };
+
+    const handleGoogleSignIn = async () => {
+      try {
+        const result = await signInWithPopup(auth, googleProvider)
+        const user = result.user;
+        onClose()
+        alert("Signed in with Google successfully!")
+      } catch (error) {
+        console.error(error)
+        alert("Google sign-in failed")
+      }
+    };
 
     const handleLoginClicked = () => {
       setShowLogin (prev => !prev);
@@ -28,14 +78,18 @@ function SignIn({onClose}) {
                     <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
                   </svg>
                 </button>
+                <img src="./Rave-Logo.png" alt="login-logo-svg" width={150} />
                 <h1>Sign In</h1>
-                  <form className="sign-in-form">
-                      <input type="email" placeholder="Email" required />
-                      <input type="password" placeholder="Password" required />
+                  <form className="sign-in-form" onSubmit={handleSignup}>
+                        {showError && (
+                          <p style={{color: "red"}}>{error}</p>
+                        )}
+                      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                       <p className="forgot-password" style={{textAlign: 'left'}}>Forgot Password?</p>
                       <div className="social-sign-in-method">
                           <p style={{fontSize: '12px', opacity: '0.5'}}>or sign in with</p>
-                          <button>
+                          <button onClick={handleGoogleSignIn}>
                             <FaGoogle size={30} /> 
                           </button>
                       </div>

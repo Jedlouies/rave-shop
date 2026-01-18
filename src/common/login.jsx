@@ -13,6 +13,8 @@ function Login({onClose}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showSignIn, setShowSignIn] = useState(false);
+  const [error, setError] = useState("");
+  const [showError, setShowError] = useState(false);
 
   const handleLogin = async(e) => {
     e.preventDefault();
@@ -21,7 +23,21 @@ function Login({onClose}) {
       onClose()
       alert("Login Successfully"); 
     } catch (error) {
-      alert(error.message);
+      console.error(error);
+      switch (error.code) {
+        case "auth/invalid-email":
+          setError("Invalid Email");
+          break;
+        case "auth/user-not-found":
+          setError("No Account Found with this Email");
+          break;
+        case "auth/invalid-credential":
+          setError("Incorrect Password or Email");
+          break;
+        default:
+          setError("Failed to Log-in Try Again")          
+      }
+      setShowError(true); 
     }
   }
 
@@ -29,6 +45,7 @@ function Login({onClose}) {
     try {
       await signInWithPopup(auth, googleProvider);
       onClose()
+      alert("Login Successfully"); 
     } catch (error) {
       console.log(error.message);
     }
@@ -54,8 +71,12 @@ function Login({onClose}) {
               <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
             </svg>
           </button>
+          <img src="./Rave-Logo.png" alt="login-logo-svg" width={150} />
           <h1>Login</h1>
             <form className="login-form" onSubmit={handleLogin}>
+                {showError && (
+                  <p style={{color: "red"}}>{error}</p>
+                )}
                 <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
                 <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
                 <p className="forgot-password" style={{textAlign: 'left'}}>Forgot Password?</p>
