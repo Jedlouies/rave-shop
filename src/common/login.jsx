@@ -6,9 +6,13 @@ import { auth, googleProvider } from "../firebase"
 import SignIn from "./sign-in"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { signInWithPopup } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 
-function Login({onClose}) {
+function Login({onClose, onLoginSuccess}) {
+
+  const navigate = useNavigate();
+  
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,9 +23,11 @@ function Login({onClose}) {
   const handleLogin = async(e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password)
+      await signInWithEmailAndPassword(auth, email, password);
+      onLoginSuccess();
       onClose()
-      alert("Login Successfully"); 
+      alert("Login Successfully");
+      navigate("/home"); 
     } catch (error) {
       console.error(error);
       switch (error.code) {
@@ -44,8 +50,10 @@ function Login({onClose}) {
   const handleGoogleLogin = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
+      onLoginSuccess();
       onClose()
-      alert("Login Successfully"); 
+      alert("Login Successfully");
+      navigate("/home"); 
     } catch (error) {
       console.log(error.message);
     }

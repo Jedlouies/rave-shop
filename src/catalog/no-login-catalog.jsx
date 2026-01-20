@@ -3,6 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { db } from "../firebase"
 import "../styles/no-login-catalog.css";
+import { useNavigate } from "react-router-dom";
 
 function StarRating ({stars}) {
     return (
@@ -26,6 +27,7 @@ function NoLoginCatalog() {
     const [price, setPrice] = useState("");
     const [reviews, setReviews] = useState("");
     const [shoes, setShoes] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchShoes = async () => {
@@ -38,6 +40,10 @@ function NoLoginCatalog() {
         };
         fetchShoes();
     }, []);
+
+    const handleAddToCart = () => {
+        navigate("/")
+    }
 
     return (
         <>
@@ -59,7 +65,12 @@ function NoLoginCatalog() {
                 <div className="grid">
                     {shoes.map(shoe => (
                         <div className="card" key={shoe.id}>
-                            <img src="" alt="" width='100%' height={200}/>
+                            <img src={shoe.images[0]} alt="primary-image" width='100%' height={200}/>
+                            <div className="card-images">
+                                <img src={shoe.images[1]} alt="other-images" width="30%" height={80} />
+                                <img src={shoe.images[2]} alt="other-images" width="30%" height={80} />
+                                <img src={shoe.images[3]} alt="other-images" width="30%" height={80} />
+                            </div>
                             <h3>{shoe.name}</h3>
                             <h4>{shoe.nickname}</h4>
                             <h2>₱{shoe.price}</h2>
@@ -68,7 +79,8 @@ function NoLoginCatalog() {
                                 <StarRating stars={shoe.stars} />
                                 <span>{shoe.stars} / 5.0</span>
                             </div>
-                            <button>Add to Cart</button>
+
+                            <button onClick={handleAddToCart}>Add to Cart</button>
                         </div>
                     ))}
                 </div>
@@ -79,3 +91,4 @@ function NoLoginCatalog() {
 }
 
 export default NoLoginCatalog
+

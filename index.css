@@ -18,7 +18,7 @@
 
     --border-radius: 20px;
 
-    --default-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    --default-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 body {

@@ -47,6 +47,18 @@
   text-align: justify;
 }
 
+.shoes-container .card .card-images {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.shoes-container .card .card-images img:hover{
+    transition: all ease-in-out 1s;
+    scale: 5;
+}
+
+
+
 .shoes-container .card button {
     width: 100%;
     padding: 10px;
@@ -66,6 +78,11 @@
     display: flex;
     gap: 20px;
     align-items: center;
+}
+
+.shoes-container .card img {
+    border: none;
+    object-fit: cover;
 }
 
 .stars {
