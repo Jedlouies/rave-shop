@@ -5,7 +5,7 @@ function Home() {
         <>
         <div className="home-container">
             <div className="banner">
-        
+                <img src="/RAVE VELOCITY RUNNER.png" alt="" />
             </div>
         </div>
         </>
