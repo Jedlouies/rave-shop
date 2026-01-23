@@ -26,7 +26,6 @@ function Login({onClose, onLoginSuccess}) {
       await signInWithEmailAndPassword(auth, email, password);
       onLoginSuccess();
       onClose()
-      alert("Login Successfully");
       navigate("/home"); 
     } catch (error) {
       console.error(error);
@@ -52,7 +51,6 @@ function Login({onClose, onLoginSuccess}) {
       await signInWithPopup(auth, googleProvider);
       onLoginSuccess();
       onClose()
-      alert("Login Successfully");
       navigate("/home"); 
     } catch (error) {
       console.log(error.message);

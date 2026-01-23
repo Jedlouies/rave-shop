@@ -1,7 +1,6 @@
 import "./styles/landing-page.css";
 
 function LandingPage() {
-  const bannerText = "Summer Sale is Here! ◌ Get Up to 50% Off on Select Styles! ◌ Limited Time Offer! ◌ ";
 
   return (
   <>

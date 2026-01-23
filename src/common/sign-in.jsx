@@ -2,11 +2,13 @@ import { FaGoogle } from "react-icons/fa";
 import Login from "./login";
 import "../styles/sign-in.css"
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
 
 function SignIn({onClose}) {    
 
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showLogin, setShowLogin] = useState(false);
@@ -22,9 +24,9 @@ function SignIn({onClose}) {
           email,
           password
         );
+        handleLoginClicked();             
 
         console.log("User created:", userCredential.user);
-        alert("Account created successfully!");
       } catch (error) {
         console.error(error);
 
@@ -49,8 +51,7 @@ function SignIn({onClose}) {
       try {
         const result = await signInWithPopup(auth, googleProvider)
         const user = result.user;
-        onClose()
-        alert("Signed in with Google successfully!")
+        handleLoginClicked();
       } catch (error) {
         console.error(error)
         alert("Google sign-in failed")
@@ -87,13 +88,14 @@ function SignIn({onClose}) {
                       <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                       <p className="forgot-password" style={{textAlign: 'left'}}>Forgot Password?</p>
+
+                      <button className="submit-btn">Submit</button>
                       <div className="social-sign-in-method">
                           <p style={{fontSize: '12px', opacity: '0.5'}}>or sign in with</p>
                           <button onClick={handleGoogleSignIn}>
                             <FaGoogle size={30} /> 
                           </button>
                       </div>
-                      <button className="submit-btn">Submit</button>
                       <p>Already have an account? <b onClick={handleLoginClicked} className="login-click">Click Here</b></p>
                   </form>
         </div>

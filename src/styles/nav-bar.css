@@ -64,6 +64,14 @@
     border-radius: 20px;
 }
 
+.nav-bar-container .nav-link-item h1 {
+    font-size: var(--font-size-lg);
+}
+
+.nav-bar-container .nav-link-item h1 {
+    font-size: var(--font-size-sm);
+}
+
 .nav-bar-container .nav-link-item:hover {
     cursor: pointer;
     color: var(--primary-color);
@@ -88,6 +96,10 @@
     background-color: #1c1180;
 }
 
+.nav-bar-container button h1 {
+    font-size: var(--font-size-lg);
+}
+
 .nav-bar-container button:hover {
     background-color: #3a2fa1;
     scale: 1.05;
@@ -95,6 +107,7 @@
 
 .user-profile img {
     width: 100%;
+    min-width: 60px;
     height: 60px;
     border-radius: 30px;
 }
@@ -105,7 +118,7 @@
         padding-left: 5%;
         padding-right: 5%;
         margin-left: 20px;
-        margin-right: 0px;
+        margin-right: 20px;
     }
 
     .nav-bar-container .nav-logo {
