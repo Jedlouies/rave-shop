@@ -71,6 +71,27 @@
         font-size: var(--font-size-lg);
     }
      .home-container .banner .objects .words p {
-        font-size: var(--font-size-sm);
+        font-size: 10px;
+    }
+
+    .home-container .banner .shoes {
+    width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-container .banner .objects .content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .home-container .banner .shoes {
+        width: 200px;
+    }
+
+    .home-container .banner .objects .words  {
+        text-align: center;
+        width: 80%;
+        font-size: 10px;
     }
 }

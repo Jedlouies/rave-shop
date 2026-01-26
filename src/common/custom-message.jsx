@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import "../styles/custom-message.css"
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 
-function CustomMessage({ message, type, onClose, duration = 1000000 }) {
+function CustomMessage({ message, subtitle, icon, button1, button2, type, onClose, duration = 10000 }) {
 
     const user = auth.currentUser;
+    const navigate = useNavigate();
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -17,9 +19,13 @@ function CustomMessage({ message, type, onClose, duration = 1000000 }) {
   return (
     <div className="custom-message-container">
       <div className="message">
-        <img src="/party-emoji.gif" alt="" width={100}/>
+        <img src={icon} alt="" width={100} height={100}/>
         <h2>{message}</h2>
-        <button onClick={onClose}>OK</button>
+        <p>{subtitle}</p>
+        <div className="buttons">
+          <button onClick={onClose}>{button1}</button>
+          <button style={{backgroundColor: "#1c1180", color: "white", fontWeight: "bold"}} onClick={() => navigate("/products")}>{button2}</button>
+        </div>
       </div>
     </div>
   );

@@ -44,7 +44,11 @@ function NavBar({handleLoginClick, isLoggedIn, handleLogoutClick}) {
   }
 
   const handleProductClicked = () => {
-    navigate("/products")
+    if (user) {
+      navigate("/products/catalog/view");  
+    } else {
+      navigate("/products");  
+    }
   };
 
   return (

@@ -31,10 +31,9 @@ function SignIn({onClose}) {
         );
 
         await updateProfile(userCredential.user, {
-          displayName: nameFromInput
+          displayName: userName
         });
 
-        setUserName(nameFromInput);
         setShowMessage(true);
       } catch (error) {
         console.error(error);
@@ -62,10 +61,9 @@ function SignIn({onClose}) {
         const userCredential = await signInWithPopup(auth, googleProvider)
 
         await updateProfile(userCredential.user, {
-          displayName: nameFromInput
+          displayName: userName
         });
 
-        setUserName(nameFromInput);
         setShowMessage(true);
       } catch (error) {
         console.error(error)
@@ -84,7 +82,7 @@ function SignIn({onClose}) {
     return (
     <>
       {showMessage ? 
-      (<CustomMessage message={`Welcome aboard, ${userName}!`} type="success" onClose={() => {
+      (<CustomMessage message={`You’re all set, ${userName}!`} subtitle="Welcome to RAVE. Your personalized catalog is ready—discover the tech and style behind our newest drops." icon="/party-emoji.gif" button1="Not Now" button2="View Catalog" type="success" onClose={() => {
           setShowMessage(false); 
           onClose();          
         }} 
@@ -105,6 +103,7 @@ function SignIn({onClose}) {
                         {showError && (
                           <p style={{color: "red"}}>{error}</p>
                         )}
+                      <input type="text" placeholder="Full Name" value={userName} onChange={(e) => setUserName(e.target.value)} required /> 
                       <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                       <p className="forgot-password" style={{textAlign: 'left'}}>Forgot Password?</p>
@@ -124,9 +123,9 @@ function SignIn({onClose}) {
                       </div>
                       <p>Already have an account? <b onClick={handleLoginClicked} className="login-click">Click Here</b></p>
                   </form>
-        </div>
+          </div>
 
-      )
+        )
       )}
     </>
     );

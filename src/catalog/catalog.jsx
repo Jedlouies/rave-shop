@@ -21,7 +21,7 @@ function StarRating ({stars}) {
     );
 }
 
-function NoLoginCatalog() {
+function Catalog() {
 
     const [category, setCategory] = useState("All");
     const [price, setPrice] = useState("All");
@@ -81,7 +81,16 @@ function NoLoginCatalog() {
             <div className="shoes-container">
                 <h1>{category || "All Shoes"}</h1>
                 <div className="grid">
-                    {filteredShoes.map(shoe => (
+                    {filteredShoes.length === 0 ? (
+                        <div className="no-products-found">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="red" class="bi bi-ban" viewBox="0 0 16 16">
+                            <path d="M15 8a6.97 6.97 0 0 0-1.71-4.584l-9.874 9.875A7 7 0 0 0 15 8M2.71 12.584l9.874-9.875a7 7 0 0 0-9.874 9.874ZM16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0"/>
+                            </svg>
+                            <h2>No products found.</h2>
+                            <p>Try changing your filters.</p>
+                        </div>
+                    ) : (
+                    filteredShoes.map(shoe => (
                         <div className="card" key={shoe.id}>
                             <img src={shoe.images[0]} alt="primary-image" width='100%' height={200}/>
                             <div className="card-images">
@@ -97,10 +106,13 @@ function NoLoginCatalog() {
                                 <StarRating stars={shoe.stars} />
                                 <span>{shoe.stars} / 5.0</span>
                             </div>
-
-                            <button onClick={handleAddToCart}>Add to Cart</button>
+                            <div className="card-buttons">
+                                <button style={{fontWeight: 'bold'}} onClick={handleAddToCart}>Buy</button>
+                                <button style={{backgroundColor: "transparent", color: 'black', boxShadow: "var(--default-box-shadow)"}} onClick={handleAddToCart}>Add to Cart</button>
+                            </div>
                         </div>
-                    ))}
+                    ))
+                    )}
                 </div>
             </div>
         </div>
@@ -108,5 +120,5 @@ function NoLoginCatalog() {
     );   
 }
 
-export default NoLoginCatalog
+export default Catalog
 

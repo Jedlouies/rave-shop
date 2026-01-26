@@ -2,13 +2,13 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../src/firebase";
+import Home from "../src/home/home"
 import NavBar from "../src/common/nav-bar";
 import LandingPage from "./landing-page";
 import Login from "../src/common/login";
-import SignIn from "../src/common/sign-in";
 import NoLoginCatalog from "../src/catalog/no-login-catalog";
-import Home from "../src/home/home"
-import { auth } from "../src/firebase";
+import Catalog from "../src/catalog/catalog";
 
 function App() {
 
@@ -49,6 +49,8 @@ function App() {
                 <Route path="/" element={!isLoggedIn ? <Navigate to="/home" /> : <LandingPage handleBuyNow={() => setShowLogin(true)} />} />
                 <Route path="/products" element={<NoLoginCatalog />} />
                 <Route path="/home" element={!isLoggedIn ? <Home /> : <Navigate to="/" />} />
+
+                <Route path="/products/catalog/view" element={<Catalog />} />
             </Routes>
             
             {showLogin && (
