@@ -19,9 +19,11 @@ function Login({onClose, onLoginSuccess}) {
   const [showSignIn, setShowSignIn] = useState(false);
   const [error, setError] = useState("");
   const [showError, setShowError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async(e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       onLoginSuccess();
@@ -47,8 +49,10 @@ function Login({onClose, onLoginSuccess}) {
   }
 
   const handleGoogleLogin = async () => {
+    setLoading(true);
     try {
       await signInWithPopup(auth, googleProvider);
+      
       onLoginSuccess();
       onClose()
       navigate("/home"); 
@@ -86,13 +90,21 @@ function Login({onClose, onLoginSuccess}) {
                 <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
                 <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
                 <p className="forgot-password" style={{textAlign: 'left'}}>Forgot Password?</p>
+                
+                {loading ? (
+                  <button className="submit-btn" type="submit" disabled>
+                    Loading...
+                  </button>
+                ) : 
+                ( <button className="submit-btn" type="submit">Submit</button> )
+                }
+                
                 <div className="social-login-method">
                     <p style={{fontSize: '12px', opacity: '0.5'}}>or login with</p>
                     <button onClick={handleGoogleLogin}>
                       <FaGoogle size={30} /> 
                     </button>
                 </div>
-                <button className="submit-btn" type="submit">Submit</button>
                 <p>Don't have yet an account? <b onClick={handleSignInClicked} className="sign-in-click">Click Here</b></p>
             </form>
         </div>

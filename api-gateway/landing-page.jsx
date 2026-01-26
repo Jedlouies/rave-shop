@@ -1,6 +1,6 @@
 import "./styles/landing-page.css";
 
-function LandingPage() {
+function LandingPage({handleBuyNow}) {
 
   return (
   <>
@@ -14,7 +14,7 @@ function LandingPage() {
             <h2>Rave Sneakers</h2>
             <p>Experience motion redefined. The Violet Velocity combines futuristic style with athletic performance. Featuring our signature 'Aero-Mesh' knit for maximum airflow and a dynamic, energy-returning sole that glows with electric purple intensity. Perfect for the night runner looking to make a statement.</p>
             <p><b>Price:</b> $129.99 <strike>$129.99</strike></p>
-            <button className="buy-now-button">Buy Now</button>
+            <button className="buy-now-button" onClick={handleBuyNow}>Buy Now</button>
         </div>
         <div className="footer">
             <div className="footer-body">

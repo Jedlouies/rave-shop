@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
 import NavBar from "../src/common/nav-bar";
 import LandingPage from "./landing-page";
 import Login from "../src/common/login";
@@ -13,20 +14,28 @@ function App() {
 
     const [showLogin, setShowLogin] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const user = auth.currentUser; 
-        if (user) {
-            setIsLoggedIn(true);
-        } else {
-            setIsLoggedIn(false);
-        }
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setIsLoggedIn(false);
+            } else {
+                setIsLoggedIn(true);
+            }
+            setLoading(false);
+        });
+       return () => unsubscribe();
     }, []);
 
     const handleLoginSuccess = () => {
         setIsLoggedIn(false);
         setShowLogin(false);
     };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="app-container">
@@ -37,9 +46,9 @@ function App() {
                 
             />
             <Routes>
-                <Route path="/" element={<LandingPage />} />
+                <Route path="/" element={!isLoggedIn ? <Navigate to="/home" /> : <LandingPage handleBuyNow={() => setShowLogin(true)} />} />
                 <Route path="/products" element={<NoLoginCatalog />} />
-                <Route path="/home" element={<Home />} />
+                <Route path="/home" element={!isLoggedIn ? <Home /> : <Navigate to="/" />} />
             </Routes>
             
             {showLogin && (

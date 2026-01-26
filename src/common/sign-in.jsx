@@ -1,32 +1,41 @@
 import { FaGoogle } from "react-icons/fa";
 import Login from "./login";
+import CustomMessage from "./custom-message";
 import "../styles/sign-in.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
 
 function SignIn({onClose}) {    
 
     const navigate = useNavigate();
+    const user = auth.currentUser;
+    const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showLogin, setShowLogin] = useState(false);
     const [error, setError] = useState("");
     const [showError, setShowError] = useState(false);
+    const [showMessage, setShowMessage] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleSignup = async (e) => {
       e.preventDefault();
-
+      setLoading(true);
       try {
         const userCredential = await createUserWithEmailAndPassword(
           auth,
           email,
           password
         );
-        handleLoginClicked();             
 
-        console.log("User created:", userCredential.user);
+        await updateProfile(userCredential.user, {
+          displayName: nameFromInput
+        });
+
+        setUserName(nameFromInput);
+        setShowMessage(true);
       } catch (error) {
         console.error(error);
 
@@ -48,10 +57,16 @@ function SignIn({onClose}) {
     };
 
     const handleGoogleSignIn = async () => {
+      setLoading(true);
       try {
-        const result = await signInWithPopup(auth, googleProvider)
-        const user = result.user;
-        handleLoginClicked();
+        const userCredential = await signInWithPopup(auth, googleProvider)
+
+        await updateProfile(userCredential.user, {
+          displayName: nameFromInput
+        });
+
+        setUserName(nameFromInput);
+        setShowMessage(true);
       } catch (error) {
         console.error(error)
         alert("Google sign-in failed")
@@ -68,8 +83,13 @@ function SignIn({onClose}) {
 
     return (
     <>
-
-      {showLogin ? (
+      {showMessage ? 
+      (<CustomMessage message={`Welcome aboard, ${userName}!`} type="success" onClose={() => {
+          setShowMessage(false); 
+          onClose();          
+        }} 
+        />
+      ) : (showLogin ? (
         <Login onClose={handleClose}/>
       ) : (
           <div className="sign-in-container">
@@ -88,8 +108,14 @@ function SignIn({onClose}) {
                       <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                       <p className="forgot-password" style={{textAlign: 'left'}}>Forgot Password?</p>
-
-                      <button className="submit-btn">Submit</button>
+                      
+                     {loading ? (
+                        <button className="submit-btn" type="submit" disabled>
+                          Loading...
+                        </button>
+                      ) : 
+                      ( <button className="submit-btn" type="submit">Submit</button> )
+                      }
                       <div className="social-sign-in-method">
                           <p style={{fontSize: '12px', opacity: '0.5'}}>or sign in with</p>
                           <button onClick={handleGoogleSignIn}>
@@ -100,6 +126,7 @@ function SignIn({onClose}) {
                   </form>
         </div>
 
+      )
       )}
     </>
     );

@@ -1,0 +1,40 @@
+.custom-message-container {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  bottom: 50%;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.custom-message-container .message {
+    display: block;
+    background-color: white;
+    min-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    color: black;
+    height: 250px;
+}
+
+.custom-message-container .message button { 
+    margin-top: 10px;   
+    border: none;
+    width: 180px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.custom-message-container .message button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgb(29, 0, 146, 0.5);
+}
