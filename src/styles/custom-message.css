@@ -1,10 +1,5 @@
 .custom-message-container {
   display: flex;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  right: 50%;
-  bottom: 50%;
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -12,23 +7,26 @@
 
 .custom-message-container .message {
     display: block;
-    background-color: white;
-    min-width: 500px;
+    background: linear-gradient(to right, #1c1180, #493AD2);
+    width: 400px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
-    padding: 20px;
+    padding: 40px;
     text-align: center;
-    color: black;
+    align-content: center;
+    color: white;
     height: 300px;
 }
+
 
 .custom-message-container .message button { 
     margin-top: 10px;   
     border: none;
     width: 180px;
     padding: 10px;
+    color: white;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
     background-color: transparent;
     font-size: 16px;
     cursor: pointer;

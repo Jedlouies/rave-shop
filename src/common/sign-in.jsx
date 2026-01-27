@@ -76,17 +76,22 @@ function SignIn({onClose}) {
     }
 
     const handleClose = () => {
+    setShowMessage(false);
     onClose();
   }
 
     return (
     <>
       {showMessage ? 
-      (<CustomMessage message={`You’re all set, ${userName}!`} subtitle="Welcome to RAVE. Your personalized catalog is ready—discover the tech and style behind our newest drops." icon="/party-emoji.gif" button1="Not Now" button2="View Catalog" type="success" onClose={() => {
-          setShowMessage(false); 
-          onClose();          
+      (
+        <div className="custom-message"> 
+          <CustomMessage message={`You’re all set, ${userName}!`} 
+          subtitle="Welcome to RAVE. Your personalized catalog is ready discover the tech and style behind our newest drops." 
+          icon="/party-emoji.gif" button1={<button onClick={handleClose}>Not Now</button>} button2={<button style={{backgroundColor: "white", color: "black", fontWeight: "bold"}} onClick={navigate("/home")}>View Catalog</button>} type="success" onClose={() => {
+                    
         }} 
         />
+        </div>
       ) : (showLogin ? (
         <Login onClose={handleClose}/>
       ) : (
