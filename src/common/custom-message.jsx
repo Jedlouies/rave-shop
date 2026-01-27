@@ -3,7 +3,7 @@ import "../styles/custom-message.css"
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 
-function CustomMessage({ message, subtitle, icon, button1, button2, type, onClose, duration = 10000000 }) {
+function CustomMessage({ message, subtitle, icon, button1, button2, type, onClose, duration = 1000000 }) {
 
     const user = auth.currentUser;
     const navigate = useNavigate();

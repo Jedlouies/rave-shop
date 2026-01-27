@@ -26,7 +26,7 @@ function Menu({onClose}) {
             subtitle="You’re about to logged out. Don’t miss our next release keep an eye on your inbox."  
             button1={<button onClick={() => setShowMessage(false)} style={{justifyContent: "center"}}>Not Now</button>} 
             button2={<button onClick={handleLogoutClicked}  style={{backgroundColor: "white", color: "black", fontWeight: "bold", justifyContent: "center"}}>Logout</button>}
-            type="success" onClose={() => { setShowMessage(false); }} duration={10000} 
+            type="success" onClose={() => { setShowMessage(false); }} duration={1000000} 
             icon={"/wave-emoji.gif"} 
              />}
         </div>

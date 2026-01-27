@@ -16,9 +16,6 @@ function Home() {
                     <img className="banner-image" src="/Banner 1.jpg" alt="banner" />
 
                 </div>
-                
-                  
-                
             </div>
         </div>
         </>

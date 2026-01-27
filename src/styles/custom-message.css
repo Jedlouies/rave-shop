@@ -15,7 +15,7 @@
     text-align: center;
     align-content: center;
     color: white;
-    height: 300px;
+    height: 350px;
 }
 
 
@@ -41,4 +41,20 @@
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .custom-message-container .message {
+        width: 90%;
+        padding: 20px;
+        height: auto;
+    }
+
+    .custom-message-container .message .buttons {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    
 }

@@ -34,7 +34,11 @@ function App() {
     };
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="loading-screen" 
+        style={{position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+        > 
+        <img src="/loading.gif" alt="Loading..." width={200} height={200}/>
+        </div>;
     }
 
     return (
