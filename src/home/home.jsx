@@ -9,13 +9,26 @@ function Home() {
                     <div className="content">
                         <img className="shoes" src="/midnight1.png" alt="shoes" />
                         <div className="words">
-                            <h1 style={{color: 'skyblue'}}>Midnight Runner</h1>
-                            <p>Embrace the night with the Midnight Runner, designed for those who dare to shine in the darkest hours. Featuring a sleek black design with reflective accents, this sneaker ensures visibility and style. The 'LunaGrip' sole provides exceptional traction for urban adventures after dark. Perfect for night owls and city explorers.</p>
+                            <h2 style={{color: '#2515b6'}}>Midnight Runner</h2>
+                            <p>Embrace the dark with Midnight Runner, made for those who shine at night. Sleek black with reflective hits, this shoe gives style and safety. Its 'LunaGrip' sole offers traction for city life. Ideal for the urban explorer.</p>
+                            <button>Order Now</button>
                         </div>
                     </div>
-                    <img className="banner-image" src="/Banner 1.jpg" alt="banner" />
-
                 </div>
+                <img className="banner-image" src="/Banner 1.jpg" alt="banner" />
+            </div>
+             <div className="banner">
+                <div className="objects">
+                    <div className="content">
+                        <img className="shoes" src="/shoes2-1.png" alt="shoes" />
+                        <div className="words">
+                            <h2 style={{color: 'white'}}>White Nebula</h2>
+                            <p>The White Nebula is where high-fashion minimalism meets the energy of the dance floor. Inspired by the bright core of a star, these sneakers feature a triple-white matte and mesh upper that provides a clean, breathable foundation.</p>
+                            <button>Order Now</button>
+                        </div>
+                    </div>
+                </div>
+                <img className="banner-image" src="/banner 2.jpg" alt="banner" />
             </div>
         </div>
         </>

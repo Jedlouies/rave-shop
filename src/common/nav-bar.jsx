@@ -5,7 +5,7 @@ import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FaBell, FaJediOrder } from "react-icons/fa";
-import defaultProfile from "../../public/person-profile.jpg";
+import defaultProfile from "/person-profile.jpg";
 import Menu from "./menu";
 
 function NavBar({handleLoginClick, isLoggedIn, handleLogoutClick}) {

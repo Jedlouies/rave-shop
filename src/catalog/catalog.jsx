@@ -128,8 +128,8 @@ function Catalog() {
                             </div>
                             <h3>{shoe.name}</h3>
                             <h4>{shoe.nickname}</h4>
-                            <h2>₱{shoe.price}</h2>
-                            <p>{shoe.description}</p>
+                            <h2 style={{color: '#1c1180'}}>₱{shoe.price}</h2>
+                            <p className="shoe-description">{shoe.description}</p>
                             <div className="rating">
                                 <StarRating stars={shoe.stars} />
                                 <span>{shoe.stars} / 5.0</span>

@@ -57,7 +57,7 @@
 .shoes-container .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 16px;
+  gap: 50px;
   padding: 20px;
 }
 
@@ -121,7 +121,11 @@
 
 .shoes-container .card img {
     border: none;
-    object-fit: cover;
+    object-fit: contain;
+}
+
+.shoes-container .card .shoe-description {
+    height: 15%;
 }
 
 .stars {
