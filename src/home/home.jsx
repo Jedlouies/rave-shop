@@ -45,9 +45,10 @@ function Home() {
     return (
         <>
         <div className="home-container">
-            <div className="banner">
+            <div className="header">
+                <div className="banner">
                 <div className="objects">
-                    <div className="content">
+                    <div className="content">   
                         <img className="shoes" src="/midnight1.png" alt="shoes" />
                         <div className="words">
                             <h2 style={{color: '#2515b6'}}>Midnight Runner</h2>
@@ -71,8 +72,8 @@ function Home() {
                 </div>
                 <img className="banner-image" src="/banner 2.jpg" alt="banner" />
             </div>
-        </div>
-        <div className="popular-shoes">
+            </div>
+            <div className="popular-shoes">
             <h1>Popular Shoes</h1>
             <div className="grid">
                 {filteredPopularShoes.map (shoe => (
@@ -89,6 +90,25 @@ function Home() {
                         </div>
                 ))}
             </div>
+        </div>
+        <div className="home-categories">
+            <h1>Categories</h1>
+            <div className="home-cards">
+            <div className="category-card">
+                    
+            </div>
+            <div className="category-card">
+                    
+            </div>
+            <div className="category-card">
+                    
+            </div>
+            <div className="category-card">
+                    
+            </div>
+
+            </div>
+        </div>
         </div>
         </>
     );

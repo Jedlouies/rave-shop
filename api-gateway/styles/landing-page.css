@@ -22,6 +22,7 @@
 }
 
 .landing-page-container button.buy-now-button {
+    background-color: white;
     color: var(--default-text-color);
     border: none;
     border-radius: var(--border-radius);
@@ -81,7 +82,7 @@
     width: 90%;
     padding: 10px;
     text-align: center;
-    background-color: transparent;
+    background-color: white;
     border-radius: 40px;
     box-shadow: var(--default-box-shadow);
     color: var(--default-text-color);
