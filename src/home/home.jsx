@@ -1,6 +1,47 @@
-import "../styles/home.css"
+import { useEffect, useState } from "react";
+import "../styles/home.css";
+import { FaStar, FaStarHalfAlt, FaRegStar, FaHeart } from "react-icons/fa";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
+
+function StarRating ({stars}) {
+    return (
+            <div className="stars">
+                {[1, 2, 3, 4, 5].map((i) => {
+                    if (stars >= i) {
+                    return <FaStar key={i} color="navy" size={30}/>;
+                    }
+                    if (stars >= i - 0.5) {
+                    return <FaStarHalfAlt key={i} color="navy" size={30}/>;
+                    }
+                    return <FaRegStar key={i} size={30}/>;
+                })}
+            </div>
+    );
+}
 
 function Home() {
+
+    const [shoes, setShoes] = useState([]);
+
+    useEffect(() => {
+        const fetchShoes = async () => {
+            const querySnapshot = await getDocs(collection(db, "shoes"));
+            const shoesList = querySnapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            setShoes(shoesList)
+        };
+        fetchShoes();
+    }, []);
+
+    const handleAddToCart = () => {
+    console.log("Added to cart!");
+};
+
+    const filteredPopularShoes = shoes.filter((shoe) => shoe.stars >= 4.8);
+
     return (
         <>
         <div className="home-container">
@@ -29,6 +70,24 @@ function Home() {
                     </div>
                 </div>
                 <img className="banner-image" src="/banner 2.jpg" alt="banner" />
+            </div>
+        </div>
+        <div className="popular-shoes">
+            <h1>Popular Shoes</h1>
+            <div className="grid">
+                {filteredPopularShoes.map (shoe => (
+                    <div className="card" key={shoe.id}>
+                            
+                            <img src={shoe.images[0]} alt="primary-image" width='100%' height={200}/>
+                            <h3>{shoe.name}</h3>
+                            <h2 style={{color: '#1c1180'}}>₱{shoe.price}</h2>
+                            <p className="shoe-description">{shoe.description}</p>
+                            <div className="card-buttons">
+                                <button style={{fontWeight: 'bold'}} onClick={handleAddToCart}>Buy</button>
+                                <button style={{backgroundColor: "transparent", color: 'black', boxShadow: "var(--default-box-shadow)"}} onClick={handleAddToCart}>Add to Cart</button>
+                            </div>
+                        </div>
+                ))}
             </div>
         </div>
         </>

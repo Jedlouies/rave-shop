@@ -1,6 +1,6 @@
 .nav-bar-container {
     position: relative;
-    background-color: transparent;
+    background-color: white;
     padding: var(--spacing-base);
     top: 20px;
     padding: 25px;
@@ -65,6 +65,7 @@
     padding-right: 10px;
     border-radius: 30px;
 }
+
 
 .nav-bar-container .nav-link-item h1 {
     font-size: var(--font-size-lg);

@@ -1,3 +1,4 @@
+
 .home-container {
     display: flex;
     margin-top: 30px;
@@ -55,13 +56,13 @@
 }
 
 .home-container .banner .objects .words{
-    width: 30%;
+    width: 45%;
     color: white;
 }
 
 
 .home-container .banner .shoes {
-   width: 50%;
+   width: 45%;
 }
 
 .home-container .banner .banner-image {
@@ -97,55 +98,42 @@
     font-weight: bold;
 }
 
-.banner2 {
-    width: 50%;
+.popular-shoes .card {
+  width: 100%;
+  background-color: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: var(--default-box-shadow);
+  text-align: justify;
 }
 
-.banner2-top {
-    display: flex;
-    width: 100%;
-    height: 400px;
-    box-shadow: var(--default-box-shadow);
-    background-color: aqua;
-    border-radius: 30px;
-    align-items: center;
-}
-
-.banner2 .banner2-top .background{
-    border-radius: 30px;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.banner2 .banner2-top .objects {
-    display: flex;
-    position: absolute;
-    width: 100%;
-}
-
-.banner2 .banner2-top .words {
+.popular-shoes {
     display: flex;
     flex-direction: column;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
-.banner2 .banner2-top .words h2 {
-    color: white;
-    width: 20%;
+.popular-shoes .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 50px;
+  padding: 20px;
 }
 
-
-.banner2 .banner2-top .words p {
-    color: white;
-    font-size: 10px;
-    width: 20%;
+.popular-shoes .card button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--primary-txt-color);
+    cursor: pointer;
 }
 
-
-
-.banner2 .banner2-top .shoes2 {
-    width: 20%;
-    margin: 0px;
+.popular-shoes .card img {
+    border: none;
+    object-fit: contain;
 }
 
 
@@ -157,11 +145,12 @@
 
     .home-container .banner .objects{
         height: 550px;
-        width: 85%;
+        width: 50%;
     }
 
     .home-container .banner .content {
         flex-direction: column;
+        width: 80%;
     }
 
     .home-container .banner {
@@ -173,10 +162,19 @@
     }
     
     .home-container .banner .objects .words {
-        width: 40%;
+        text-align: center;
+        width: 100%;
     }
      .home-container .banner .objects .words p {
         font-size: 10px;
+    }
+
+    .home-container .banner .objects .words h2 {
+        text-align: center;
+    }
+
+    .home-container .banner .objects .shoes {
+        width: 90%;
     }
 
 
@@ -191,6 +189,6 @@
 
     .home-container .banner .objects .words  {
         text-align: center;
-        width: 40%;
+        width: 90%;
     }
 }

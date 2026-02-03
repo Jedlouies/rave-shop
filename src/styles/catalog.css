@@ -135,9 +135,9 @@
 
 .no-products-found {
     position: absolute;
-    background: linear-gradient(to right, #1c1180, #493AD2);
+    background-color: white;
     justify-self: center;
-    color: white;
+    color: black;
     box-shadow: var(--default-box-shadow);
     padding: 30px;
     border-radius: 30px;
