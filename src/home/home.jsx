@@ -94,17 +94,34 @@ function Home() {
         <div className="home-categories">
             <h1>Categories</h1>
             <div className="home-cards">
-            <div className="category-card">
-                    
+            <div className="category-card" 
+            style={{backgroundImage: "url('/sports.png')", 
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'}}>
+                <h1>Sports</h1>        
             </div>
-            <div className="category-card">
-                    
+
+            <div className="category-card"
+            style={{backgroundImage: "url('/street.png')", 
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'}}>
+                <h1>Lifestyle & Street Wear</h1> 
             </div>
-            <div className="category-card">
-                    
+            <div className="category-card"
+            style={{backgroundImage: "url('/formal.png')", 
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'}}>
+                <h1>Formal & Business</h1>   
             </div>
-            <div className="category-card">
-                    
+            <div className="category-card"
+            style={{backgroundImage: "url('/hike.png')", 
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'}}>
+                <h1>Outdoor & Adventure</h1>
             </div>
 
             </div>

@@ -158,8 +158,20 @@
     height: 200px;
     border-radius: 20px;
     box-shadow: var(--default-box-shadow);
-    background-image:  url('/Banner 1.jpg');
+    background-color: black;
     object-fit: cover;
+    text-align: center;
+    align-content: center;
+    font-size: larger;
+    opacity: 0.5;
+    color: white;
+    padding: 10px;
+}
+
+.home-categories .category-card:hover {
+    opacity: 1;
+    scale: 1.05;
+    transition: all ease-in-out 0.5s;
 }
 
 
@@ -198,6 +210,15 @@
 
     .home-container .banner .objects .shoes {
         width: 90%;
+    }
+    
+    .home-categories .home-cards {
+        flex-direction: column;
+        justify-items: center;
+    }
+
+    .home-categories .category-card {
+        width: 98%;
     }
 
 }
