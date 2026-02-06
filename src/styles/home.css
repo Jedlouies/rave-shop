@@ -158,6 +158,8 @@
     height: 200px;
     border-radius: 20px;
     box-shadow: var(--default-box-shadow);
+    background-image:  url('/Banner 1.jpg');
+    object-fit: cover;
 }
 
 
@@ -167,9 +169,13 @@
         margin-right: 20px;
     }
 
-    .home-container .banner .objects{
-        height: 550px;
-        width: 50%;
+     .home-container .header .banner {
+    height: 500px;
+    }
+
+   .home-container .header .banner .objects {
+    height: 450px;
+    width: 40%;
     }
 
     .home-container .banner .content {
@@ -177,20 +183,13 @@
         width: 80%;
     }
 
-    .home-container .banner {
-        height: 550px;
-    }
-
-    .home-container .banner .banner-image {
-        height: 550px;
-    }
     
     .home-container .banner .objects .words {
         text-align: center;
         width: 100%;
     }
      .home-container .banner .objects .words p {
-        font-size: 10px;
+        font-size: 13px;
     }
 
     .home-container .banner .objects .words h2 {
@@ -201,7 +200,6 @@
         width: 90%;
     }
 
-
 }
 
 @media (max-width: 480px) {
@@ -210,9 +208,18 @@
         gap: 20px;
     }
 
+    .home-container .header .banner .objects {
+    height: 460px;
+    width: 50%;
+    }
+
 
     .home-container .banner .objects .words  {
         text-align: center;
         width: 90%;
+    }
+
+    .home-container .header .banner {
+    height: 500px;
     }
 }
