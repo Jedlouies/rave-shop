@@ -124,6 +124,42 @@ function Home() {
                 <h1>Outdoor & Adventure</h1>
             </div>
 
+        </div>
+
+        <div className="popular-shoes">
+            <h1>Shoes</h1>
+            <div className="grid">
+                {shoes.map (shoe => (
+                    <div className="card" key={shoe.id}>
+                            
+                            <img src={shoe.images[0]} alt="primary-image" width='100%' height={200}/>
+                            <h3>{shoe.name}</h3>
+                            <h2 style={{color: '#1c1180'}}>₱{shoe.price}</h2>
+                            <p className="shoe-description">{shoe.description}</p>
+                            <div className="card-buttons">
+                                <button style={{fontWeight: 'bold'}} onClick={handleAddToCart}>Buy</button>
+                                <button style={{backgroundColor: "transparent", color: 'black', boxShadow: "var(--default-box-shadow)"}} onClick={handleAddToCart}>Add to Cart</button>
+                            </div>
+                        </div>
+                ))}
+            </div>
+        </div>
+
+        <div className="mission">
+                <h1>Mission</h1>
+                <div className="content">
+                    <img src="/Rave-Logo-Slogan.png" alt="" width="70%"/>
+                    <p>Our mission is to redefine the rhythm of the streets. We engineer footwear 
+                        that bridges the gap between bold, futuristic aesthetics and high-performance comfort. 
+                        From the deep hues of the Midnight Rush to the ethereal pull of the White Nebula, 
+                        we don’t just make shoes—we create the gear for those who move at their own pace and light up the dark. 
+                        Step into the noise. Join the RAVE.</p>
+                </div>
+        </div>
+
+
+            <div className="home-footer">
+
             </div>
         </div>
         </div>
