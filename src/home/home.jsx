@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/home.css";
+import "../../api-gateway/styles/landing-page.css"
 import { FaStar, FaStarHalfAlt, FaRegStar, FaHeart } from "react-icons/fa";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
@@ -126,7 +127,8 @@ function Home() {
 
         </div>
 
-        <div className="popular-shoes">
+        </div>
+                <div className="popular-shoes">
             <h1>Shoes</h1>
             <div className="grid">
                 {shoes.map (shoe => (
@@ -156,10 +158,23 @@ function Home() {
                         Step into the noise. Join the RAVE.</p>
                 </div>
         </div>
-
-
-            <div className="home-footer">
-
+        <div className="footer">
+            <div className="footer-body">
+                <div className="footer-item">
+                    <img src="/Rave-Logo.png" alt="" width={50}/>
+                    <p>Your ultimate destination for trendy and affordable footwear. Step into style with Rave Shop!</p>
+                </div>
+                <div className="footer-item">
+                    <h3>Policy and Terms</h3>
+                    <p>Privacy Policy</p>
+                    <p>Terms of Service</p>
+                    <p>Return Policy</p>
+                </div>
+                <div className="footer-item">
+                    <h3>Contact Us</h3>
+                    <p>Email: support@rave.ph</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
             </div>
         </div>
         </div>

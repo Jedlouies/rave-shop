@@ -5,6 +5,8 @@
     align-items: center;
     gap: 50px;
     margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
     justify-content: center;
 }
 
@@ -79,7 +81,7 @@
 }
 
 .footer {
-    width: 90%;
+    width: 100%;
     padding: 10px;
     text-align: center;
     background-color: white;
@@ -88,6 +90,7 @@
     color: var(--default-text-color);
     font-size: 15px;
     height: auto;
+    
 }
 
 .footer-body {

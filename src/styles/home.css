@@ -5,7 +5,7 @@
     margin-top: 30px;
     margin-left: 100px;
     margin-right: 100px;
-    height: 280vh;
+    height: 372vh;
 }
 
 .home-container .header {
@@ -176,7 +176,7 @@
 
 .mission .content {
     width: 100%;
-    height: 500px;
+    height: 400px;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -184,10 +184,13 @@
 
 .home-footer {
     width: 100%;
-    height: 200px;
-    background-color: #1c1180;
+    height: 50px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
+    box-shadow: var(--default-box-shadow);
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
 
 }
 
