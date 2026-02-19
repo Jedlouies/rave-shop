@@ -4,26 +4,12 @@ import "../../api-gateway/styles/landing-page.css"
 import { FaStar, FaStarHalfAlt, FaRegStar, FaHeart } from "react-icons/fa";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-
-function StarRating ({stars}) {
-    return (
-            <div className="stars">
-                {[1, 2, 3, 4, 5].map((i) => {
-                    if (stars >= i) {
-                    return <FaStar key={i} color="navy" size={30}/>;
-                    }
-                    if (stars >= i - 0.5) {
-                    return <FaStarHalfAlt key={i} color="navy" size={30}/>;
-                    }
-                    return <FaRegStar key={i} size={30}/>;
-                })}
-            </div>
-    );
-}
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Home() {
 
     const [shoes, setShoes] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchShoes = async () => {
@@ -40,6 +26,10 @@ function Home() {
     const handleAddToCart = () => {
     console.log("Added to cart!");
 };
+
+    const handleCategoryClick = (categoryName) => {
+        navigate('/products/catalog/view', {state: {selectedCategory: categoryName} });
+    };
 
     const filteredPopularShoes = shoes.filter((shoe) => shoe.stars >= 4.8);
 
@@ -99,7 +89,8 @@ function Home() {
             style={{backgroundImage: "url('/sports.png')", 
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'}}>
+            backgroundRepeat: 'no-repeat'}}
+            onClick={() => handleCategoryClick("Performance")}>
                 <h1>Sports</h1>        
             </div>
 
@@ -107,21 +98,24 @@ function Home() {
             style={{backgroundImage: "url('/street.png')", 
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'}}>
+            backgroundRepeat: 'no-repeat'}}
+            onClick={() => handleCategoryClick("Lifestyle & Streetwear")}>
                 <h1>Lifestyle & Street Wear</h1> 
             </div>
             <div className="category-card"
             style={{backgroundImage: "url('/formal.png')", 
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'}}>
+            backgroundRepeat: 'no-repeat'}}
+            onClick={() => handleCategoryClick("Formal & Business")}>
                 <h1>Formal & Business</h1>   
             </div>
             <div className="category-card"
             style={{backgroundImage: "url('/hike.png')", 
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'}}>
+            backgroundRepeat: 'no-repeat'}}
+            onClick={() => handleCategoryClick("Outdoor & Adventure")}>
                 <h1>Outdoor & Adventure</h1>
             </div>
 

@@ -3,7 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { FaStar, FaStarHalfAlt, FaRegStar, FaHeart } from "react-icons/fa";
 import { db } from "../firebase"
 import "../styles/catalog.css";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate } from "react-router-dom";
 
 function StarRating ({stars}) {
     return (
@@ -23,14 +23,19 @@ function StarRating ({stars}) {
 
 function Catalog() {
 
-    const [category, setCategory] = useState("All");
+    const location = useLocation();
+    const navigate = useNavigate();
+
+
+    const [category, setCategory] = useState(location.state?.selectedCategory || "All");
     const [price, setPrice] = useState("All");
     const [reviews, setReviews] = useState("All");
     const [favoriteLight, setFavoriteLight] = useState(true);
     const [shoes, setShoes] = useState([]);
-    const navigate = useNavigate();
 
     useEffect(() => {
+        window.history.replaceState({}, document.title);
+
         const fetchShoes = async () => {
             const querySnapshot = await getDocs(collection(db, "shoes"));
             const shoesList = querySnapshot.docs.map(doc => ({
@@ -45,6 +50,8 @@ function Catalog() {
     const handleAddToCart = () => {
         navigate("/")
     };
+
+    
 
     const handleFavoriteClick = () => {
         setFavoriteLight(false);
@@ -70,7 +77,7 @@ function Catalog() {
                 <select value={category} onChange={(e) => setCategory(e.target.value)}>
                     <option value="All">All Shoes</option>
                     <option value="Performance">Performance</option>
-                    <option value="Lifestyle / Streetwear">Lifestyle / Streetwear</option>
+                    <option value="Lifestyle & Streetwear">Lifestyle & Streetwear</option>
                     <option value="Formal & Business">Formal & Business</option>
                     <option value="Outdoor & Adventure">Outdoor & Adventure</option>
                     <option value="Limited Releases">Limited Releases</option>
