@@ -28,7 +28,7 @@ function Catalog() {
 
 
     const [category, setCategory] = useState(location.state?.selectedCategory || "All");
-    const [price, setPrice] = useState("All");
+    const [price, setPrice] = useState(location.state?.selectedPrice || "All");
     const [reviews, setReviews] = useState("All");
     const [favoriteLight, setFavoriteLight] = useState(true);
     const [shoes, setShoes] = useState([]);
