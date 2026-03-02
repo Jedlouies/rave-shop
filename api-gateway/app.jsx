@@ -9,6 +9,7 @@ import LandingPage from "./landing-page";
 import Login from "../src/common/login";
 import NoLoginCatalog from "../src/catalog/no-login-catalog";
 import Catalog from "../src/catalog/catalog";
+import Cart from "../src/cart/cart";
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
                 <Route path="/home" element={!isLoggedIn ? <Home /> : <Navigate to="/" />} />
 
                 <Route path="/products/catalog/view" element={<Catalog />} />
+                <Route path="/cart" element={<Cart />} />
             </Routes>
             
             {showLogin && (

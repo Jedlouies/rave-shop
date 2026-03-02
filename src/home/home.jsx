@@ -48,7 +48,7 @@ function Home() {
                         <div className="words">
                             <h2 style={{color: '#2515b6'}}>Midnight Runner</h2>
                             <p>Embrace the dark with Midnight Runner, made for those who shine at night. Sleek black with reflective hits, this shoe gives style and safety. Its 'LunaGrip' sole offers traction for city life. Ideal for the urban explorer.</p>
-                            <button onClick={handleSampleClick}>Order Now (P500)</button>
+                            <button onClick={handleSampleClick}>Order Now</button>
                         </div>
                     </div>
                 </div>
