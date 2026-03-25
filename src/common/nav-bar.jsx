@@ -65,7 +65,7 @@ function NavBar({handleLoginClick, isLoggedIn, handleLogoutClick}) {
     <nav className="nav-bar-container">
       <img className="nav-logo"  src="/Rave-Logo-Slogan.png" alt="nav-logo" width={120} height={30} onClick={handleLogoClicked}/>
       <div className="search-bar-container">
-        <input className="search-input" type="text" placeholder="Search for products..." />
+        <input className="search-input" type="text" placeholder="🔎︎ Search for products..." />
       </div>
       {isLoggedIn ? (
         <div className="nav-links">

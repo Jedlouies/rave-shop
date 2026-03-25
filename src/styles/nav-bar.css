@@ -31,7 +31,7 @@
     max-width: 400px;    
     padding: 8px 12px;
     border: 1px solid var(--secondary-color);
-    border-radius: 30px;
+    border-radius: 10px;
     font-size: var(--font-size-base);
     margin: 20px 20px
 }
@@ -63,7 +63,7 @@
     padding: 4px;
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 30px;
+    border-radius: 10px;
 }
 
 
@@ -118,7 +118,9 @@
     border-radius: 30px;
 }
 
-
+.nav-bar-container .user-profile:hover {
+    scale: 1.1;
+}
 
 
 
