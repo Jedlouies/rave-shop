@@ -147,6 +147,27 @@
     margin-top: 50px;
 }
 
+.favorite-nav-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.favorite-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff4d4d;
+    color: white;
+    border-radius: 50%;
+    min-width: 18px;
+    height: 18px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
 @media (max-width: 768px) {
     .no-login-catalog-container {
         margin-left: 20px;
