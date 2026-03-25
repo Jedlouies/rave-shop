@@ -90,7 +90,7 @@ function Home() {
             <h1>Categories</h1>
             <div className="home-cards">
     {[
-        { name: "Sports and Performance", cat: "Performance", img: "/sports.png" },
+        { name: "Sports & Performance", cat: "Performance", img: "/sports.png" },
         { name: "Lifestyle & Streetwear", cat: "Lifestyle & Streetwear", img: "/street.png" },
         { name: "Formal & Business", cat: "Formal & Business", img: "/formal.png" },
         { name: "Outdoor & Adventure", cat: "Outdoor & Adventure", img: "/hike.png" }
