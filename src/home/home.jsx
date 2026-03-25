@@ -89,41 +89,27 @@ function Home() {
         <div className="home-categories">
             <h1>Categories</h1>
             <div className="home-cards">
-            <div className="category-card" 
-            style={{backgroundImage: "url('/sports.png')", 
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'}}
-            onClick={() => handleCategoryClick("Performance")}>
-                <h1>Sports</h1>        
+    {[
+        { name: "Sports and Performance", cat: "Performance", img: "/sports.png" },
+        { name: "Lifestyle & Streetwear", cat: "Lifestyle & Streetwear", img: "/street.png" },
+        { name: "Formal & Business", cat: "Formal & Business", img: "/formal.png" },
+        { name: "Outdoor & Adventure", cat: "Outdoor & Adventure", img: "/hike.png" }
+    ].map((item) => (
+        <div 
+            key={item.name}
+            className="category-card" 
+            style={{ backgroundImage: `url('${item.img}')` }}
+            onClick={() => handleCategoryClick(item.cat)}
+        >
+            <div className="category-overlay">
+                <div className="category-info">
+                    <h1>{item.name}</h1>
+                    <span className="explore-btn">Explore Collection →</span>
+                </div>
             </div>
-
-            <div className="category-card"
-            style={{backgroundImage: "url('/street.png')", 
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'}}
-            onClick={() => handleCategoryClick("Lifestyle & Streetwear")}>
-                <h1>Lifestyle & Street Wear</h1> 
-            </div>
-            <div className="category-card"
-            style={{backgroundImage: "url('/formal.png')", 
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'}}
-            onClick={() => handleCategoryClick("Formal & Business")}>
-                <h1>Formal & Business</h1>   
-            </div>
-            <div className="category-card"
-            style={{backgroundImage: "url('/hike.png')", 
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'}}
-            onClick={() => handleCategoryClick("Outdoor & Adventure")}>
-                <h1>Outdoor & Adventure</h1>
-            </div>
-
         </div>
+    ))}
+</div>
 
         </div>
                 <div className="popular-shoes">
