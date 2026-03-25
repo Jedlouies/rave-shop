@@ -32,6 +32,9 @@
         const [reviews, setReviews] = useState("All");
         const [favoritedShoes, setFavoritedShoes] = useState([]);
         const [shoes, setShoes] = useState([]);
+        const [showMessage, setShowMessage] = useState(false);
+        const [cartCount, setCartCount] = useState(0);
+        const [addedShoeId, setAddedShoeId] = useState(null);
 
         useEffect(() => {
             window.history.replaceState({}, document.title);
@@ -47,13 +50,40 @@
             fetchShoes();
         }, []);
 
-        const handleAddToCart = () => {
-            navigate("/")
+        useEffect(() => {
+            const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+            setCartCount(savedCart.length);
+        }, []);
+       
+        const handleAddToCart = (shoe) => {
+            if (!shoe || shoe.target) return; 
+
+            const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+            const updatedCart = [...existingCart, shoe];
+            localStorage.setItem("cart", JSON.stringify(updatedCart));
+            
+            // Update local count for the icon
+            setCartCount(updatedCart.length);
+            
+            // Trigger event for other components (like your Navbar)
+            window.dispatchEvent(new Event("cartUpdated"));
+            
+            // Show "Added" on the button
+            setAddedShoeId(shoe.id);
+            
+            // Show your custom message
+            setShowMessage(true);
+
+            // Optional: Reset the button text after 2 seconds
+            setTimeout(() => {
+                setAddedShoeId(null);
+            }, 2000);
         };
 
         const handleCart = () => {
             navigate("/cart")
         }
+        
 
         const toggleFavorite = (shoeId) => {
             setFavoritedShoes((prev) => 
@@ -62,6 +92,8 @@
                     : [...prev, shoeId]              
             );
         };
+
+        
 
         const filteredShoes = shoes.filter((shoe) => {
             const matchesCategory = category === "All" || shoe.category === category
@@ -120,9 +152,26 @@
                             )}
                         </div>
 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-cart3" viewBox="0 0 16 16" onClick={handleCart}>
-                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-                        </svg>
+                        <div style={{ position: 'relative', cursor: 'pointer' }} onClick={handleCart}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-cart3" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                            </svg>
+                            {cartCount > 0 && (
+                                <span style={{
+                                    position: 'absolute',
+                                    top: '-5px',
+                                    right: '-5px',
+                                    backgroundColor: '#1c1180', // Matching your brand color
+                                    color: 'white',
+                                    borderRadius: '50%',
+                                    padding: '2px 6px',
+                                    fontSize: '10px',
+                                    fontWeight: 'bold'
+                                }}>
+                                    {cartCount}
+                                </span>
+                            )}
+                        </div>
                     </div>
                 </div>
                 <div className="shoes-container">
@@ -163,15 +212,27 @@
                                     <span>{shoe.stars} / 5.0</span>
                                 </div>
                                 <div className="card-buttons">
-                                    <button style={{fontWeight: 'bold'}} onClick={handleAddToCart}>Buy</button>
-                                    <button style={{backgroundColor: "transparent", color: 'black', boxShadow: "var(--default-box-shadow)"}} onClick={handleAddToCart}>Add to Cart</button>
-                                </div>
+                                    <button style={{fontWeight: 'bold'}}>Buy</button>
+                                    <button 
+                                        style={{
+                                            backgroundColor: addedShoeId === shoe.id ? "#28a745" : "transparent", 
+                                            color: addedShoeId === shoe.id ? "white" : "black", 
+                                            boxShadow: "var(--default-box-shadow)",
+                                            transition: "all 0.3s ease"
+                                        }} 
+                                        onClick={() => handleAddToCart(shoe)}
+                                        disabled={addedShoeId === shoe.id}
+                                    >
+                                        {addedShoeId === shoe.id ? "Added!" : "Add to Cart"}
+                                    </button>                                
+                                    </div>
                             </div>
                         ))
                         )}
                     </div>
                 </div>
             </div>
+
             </>
         );   
     }
